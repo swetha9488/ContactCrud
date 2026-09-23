@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Management</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #dff6ff, #f3e8ff);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 50px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+        }
+
+        /* Main Heading */
+        .title {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .title h1 {
+            color: #263238;
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .title p {
+            color: #607d8b;
+            font-size: 15px;
+        }
+
+        /* Form Card */
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 7px;
+            color: #37474f;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 13px 15px;
+            border: 1px solid #cfd8dc;
+            border-radius: 10px;
+            outline: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #5e35b1;
+            box-shadow: 0 0 0 3px rgba(94, 53, 177, 0.12);
+        }
+
+        /* Add Contact Button */
+        .add-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #5e35b1, #7e57c2);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .add-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 18px rgba(94, 53, 177, 0.3);
+        }
+
+        /* Contact List */
+        .list-title {
+            color: #263238;
+            margin-bottom: 15px;
+            font-size: 21px;
+        }
+
+        #content {
+            list-style: none;
+        }
+
+        #content li {
+            background: white;
+            margin-bottom: 15px;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.1);
+            color: #455a64;
+            line-height: 1.7;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        #content li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.14);
+        }
+
+        /* Buttons inside Contact Card */
+        #content li button {
+            border: none;
+            padding: 8px 14px;
+            margin-top: 12px;
+            margin-right: 7px;
+            border-radius: 7px;
+            color: white;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        #content li button:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        /* Delete */
+        #content li button:first-of-type {
+            background: #e53935;
+        }
+
+        /* Done */
+        #content li button:nth-of-type(2) {
+            background: #43a047;
+        }
+
+        /* Update */
+        #content li button:nth-of-type(3) {
+            background: #fb8c00;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+
+            body {
+                padding: 30px 15px;
+            }
+
+            .contact-form {
+                padding: 22px;
+            }
+
+            .title h1 {
+                font-size: 26px;
+            }
+
+            #content li button {
+                margin-top: 10px;
+                padding: 8px 11px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="title">
+        <h1>📱 Contact Manager</h1>
+        <p>Add and manage your contacts easily</p>
+    </div>
+
+    <div class="contact-form">
+
+        <div class="input-group">
+            <label>Name</label>
+            <input type="text" id="task1" placeholder="Enter your name" required>
+        </div>
+
+        <div class="input-group">
+            <label>Phone Number</label>
+            <input type="number" id="task2" placeholder="Enter phone number" required>
+        </div>
+
+        <div class="input-group">
+            <label>E-Mail</label>
+            <input type="email" id="task3" placeholder="Enter email address" required>
+        </div>
+
+        <button class="add-btn" onclick="work()">
+            + Add Contact
+        </button>
+
+    </div>
+
+    <h2 class="list-title">My Contacts</h2>
+
+    <ul id="content"></ul>
+
+</div>
+
+<script>
+        function work(){  
+            a=document.getElementById("task1").value  
+            b=document.getElementById("task2").value  
+            c=document.getElementById("task3").value  
+            d=document.getElementById("content")  
+            e=document.createElement("li")  
+            e.innerHTML=a+"<br>"+b+"<br>"+c+"<br>"+"<button onclick='this.parentElement.remove()'>DELETE</button>"  
+            +"<button onclick='work1(this.parentElement)'>DONE</button>"  
+            +"<button onclick='work2(this.parentElement)'>UPDATE</button>"  
+            d.appendChild(e)  
+        }  
+        function work1(a){  
+            a.style="color:green";  
+        }  
+        function work2(a){  
+            name=prompt("Enter the Name")  
+            phone=prompt("Enter the Phone Number")  
+            mail=prompt("Enter the E-Mail")   
+            a.childNodes[0].textContent=name  
+            a.childNodes[2].textContent=phone  
+            a.childNodes[4].textContent=mail   
+        }  
+</script>
+
+</body>
+</html>
